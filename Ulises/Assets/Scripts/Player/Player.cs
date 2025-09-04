@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
     public float speed = 3;
     Rigidbody2D rb2d;
     Vector2 moveInput;
-
     private Animator animator;
 
     void Start()
@@ -27,6 +26,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("Vertical", Mathf.Abs(moveInput.y));
 
         ChekFlip();
+        OpenCloseInventory();
     }
 
     void FixedUpdate()
@@ -36,9 +36,17 @@ public class Player : MonoBehaviour
 
     void ChekFlip()
     {
-        if(moveInput.x > 0 && transform.localScale.x < 0 || moveInput.x < 0 && transform.localScale.x > 0)
+        if (moveInput.x > 0 && transform.localScale.x < 0 || moveInput.x < 0 && transform.localScale.x > 0)
         {
-            transform.localScale = new Vector3( transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+    void OpenCloseInventory()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            UIManager.Instance.OpenOrCloseInventory();
         }
     }
 }

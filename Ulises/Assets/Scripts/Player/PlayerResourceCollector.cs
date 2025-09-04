@@ -15,21 +15,21 @@ public class PlayerResourceCollector : MonoBehaviour
 
             Destroy(collision.gameObject);
             money += 1;
-            Debug.Log("Money: " + money);
+            UIManager.Instance.UpdateMoneyCount(money);
         }
         if (collision.gameObject.CompareTag("Meat"))
         {
 
             Destroy(collision.gameObject);
             meat += 1;
-            Debug.Log("Meat: " + meat);
+            UIManager.Instance.UpdateMeatCount(meat);
         }
         if (collision.gameObject.CompareTag("Wood"))
         {
-           
+
             Destroy(collision.gameObject);
             wood += 1;
-            Debug.Log("Wood: " + wood);
+            UIManager.Instance.UpdateWoodCount(wood);
         }
     }
 
